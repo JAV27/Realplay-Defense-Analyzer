@@ -8,7 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <script src="main.js"></script>
-    <title>I Changed!</title>
+    <link href="https://assets.website-files.com/5ce030747c5e2f0a05fd8e66/5ce28b8e0b5f0b639726ef12_web-logo-32.png" rel="shortcut icon" type="image/x-icon">
+    <title>Realplay Defense Analyzer</title>
 </head>
 <body>
     <div class="header">
@@ -33,9 +34,26 @@
 
         <div class="card-holder">
 
-            <div class="gen-info">
-                <h3>General info<h3>
-                <p class="info"></p>
+            <div class="gen-info card">
+                <h3>General info</h3>
+                <ul class="info"></ul>
+            </div>
+
+            <div class="plays card">
+                <h3>Play Breakdown</h3>
+                <ul class="plays"></ul>
+            </div>
+
+            <div class="players card">
+                <h3>Players Breakdown</h3>
+                Choose a Player to Track
+                <select name="position">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
             </div>
 
         </div>
