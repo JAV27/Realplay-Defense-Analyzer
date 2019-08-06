@@ -81,10 +81,9 @@ input[type="radio"] {
   margin-bottom: 0;
   cursor: pointer;
 }
-div.gen-info {
+.card {
   background-color: white;
   width: 25%;
-  margin: auto;
   min-height: 200px;
   border: 3px solid #1991eb;
   border-radius: 10px;
@@ -92,7 +91,14 @@ div.gen-info {
   box-sizing: border-box;
   box-shadow: 2px 2px 4px #0d5891;
 }
-p.info {
+ul.info,
+ul.plays {
   color: grey;
   font-size: 16px;
+  list-style-type: none;
+  text-align: center;
+}
+.card-holder {
+  display: flex;
+  justify-content: space-around;
 }
