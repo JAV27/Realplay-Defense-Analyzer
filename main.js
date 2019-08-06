@@ -17,7 +17,6 @@ let analyze = (json, half) => {
     let fieldingPlays = json.plays.filter(play => play.half === half);;
     let numberOfPlays = fieldingPlays.length;
 
-    $('p.info').html("Number of Plays: " + numberOfPlays)
-
+    $('p.info').html("Number of Plays: " + numberOfPlays);
 
 }
