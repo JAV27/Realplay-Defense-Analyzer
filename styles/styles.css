@@ -5,6 +5,10 @@
 }
 body {
   box-sizing: border-box;
+  margin: 0;
+}
+html {
+  margin: 0;
 }
 h1 {
   font-size: 50px;
@@ -24,7 +28,7 @@ h1 {
   width: 100%;
   margin: 50px 0;
 }
-form {
+div.form {
   width: 80%;
   background-color: #f7f7f7;
   margin: auto;
@@ -45,7 +49,7 @@ textarea {
   height: 200px;
   resize: vertical;
 }
-input[type="submit"] {
+button.submit {
   background-color: #1991eb;
   border: 1px solid #1991eb;
   color: white;
@@ -60,7 +64,35 @@ input[type="submit"] {
   min-height: 500px;
   text-align: center;
   padding: 50px;
+  margin-bottom: 0;
 }
 .results h1 {
   color: #1991eb;
+}
+.radios {
+  display: flex;
+  align-items: center;
+  width: 25%;
+  justify-content: space-around;
+}
+input[type="radio"] {
+  font-size: 16px;
+  padding: 20px;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+div.gen-info {
+  background-color: white;
+  width: 25%;
+  margin: auto;
+  min-height: 200px;
+  border: 3px solid #1991eb;
+  border-radius: 10px;
+  padding: 15px;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 4px #0d5891;
+}
+p.info {
+  color: grey;
+  font-size: 16px;
 }

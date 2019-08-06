@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <script src="main.js"></script>
     <title>Realplay Defense Analyzer</title>
 </head>
 <body>
@@ -13,17 +15,27 @@
         <h1>Realplay Defense Analyzer</h1>
     </div>
     <div class="body">
-        <form>
-            <div class="radios">
-                Home: <input type="radio" name="home/away" checked>
-                Away: <input type="radio" name="home/away">
+        <div class="form">
+            <div class="radios">    
+                <div class="input">
+                    Home: <input type="radio" checked="checked" name="team" value="Home">
+                </div>
+                <div class="input">
+                    Away: <input type="radio" name="team" value="Away">
+                </div>
             </div>
             <textarea name="input"></textarea>
-            <input type="submit" value="Submit">
-        </form>
+            <button class="submit">Analyze</button>
+        </div>
     </div>
     <div class="results">
         <h1>Results</h1>
+
+        <div class="gen-info">
+            <h3>General info<h3>
+            <p class="info"></p>
+        </div>
+
     </div>
 </body>
 </html>
