@@ -129,5 +129,4 @@ select {
 }
 .players canvas {
   max-height: 400px;
-  align-self: center;
 }
