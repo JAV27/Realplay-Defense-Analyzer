@@ -8,7 +8,7 @@ It can be accessed on [github pages here](https://jav27.github.io/Realplay-Defen
 ## Some Sample JSON 
 To test out the project there's some sample text in the standard JSON format used at Realplay under /resources/sample.json.
 
-## Results 
+## What Information does it Give? 
 
 ### General Info
 The General Info page gives a quick overview of the game. As of now it gives number of innings, number of defensive plays by the selected team, and runs let in. As the scoring system gets more standardized and robust however, more data will be able to be added.
@@ -22,8 +22,8 @@ The first part of the players breakdown is the overview. This doughnut graph dis
 ## Tech used
 
 The Realplay Defense Analyzer was build with:
--Vanilla HTMl
--CSS/SASS
--Javacript
--Jquery
--CanvasJS
+- Vanilla HTMl
+- CSS/SASS
+- Javacript
+- Jquery
+- CanvasJS
