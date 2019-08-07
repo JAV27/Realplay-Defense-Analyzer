@@ -1,25 +1,49 @@
 $(document).ready(function() { 
 
+    let json = '';
+    let newJson = '';
+    let parsed = '';
+    let team = '';
+    let half = '';
+    let stats= [];
+
     $('button.submit').on('click', () => {
 
-        $(".card .info").html('');
+        $(".card ul").html('');
 
-        let json = $('textarea').val();
-        let newJson = json.replace(/'/g, '\"');
-        let parsed = JSON.parse(newJson);
-        let team = $('input[name="team"]:checked').val();
-        let half = (team==="Home" ? "top" : "bottom");
+        json = $('textarea').val();
+        newJson = json.replace(/'/g, '\"');
+        parsed = JSON.parse(newJson);
+        team = $('input[name="team"]:checked').val();
+        half = (team==="Home" ? "top" : "bottom");
 
-        let stats = analyze(parsed, half);
+        stats = analyze(parsed, half);
 
         $('.info').append("<li>Number of Defensive Plays: " + stats[0] + "</li>");
         $('.info').append("<li>Innings Played: " + stats[1] + "</li>");
         $('.info').append("<li>Runs Allowed: " + stats[3] + "</li>");
 
-        for(let play in stats[2]) {
-            $('ul.plays').append("<li>" + play + " " + stats[2][play] + "</li>");
-        }
+        chartFill(stats[2]);
+    });
 
+    $('select').on('change', () => { 
+        $('.player-plays').html('');
+
+        let position = $('option:selected').val();
+
+        if(position==="Overall") {
+            
+        } else {
+            let plays = trackPosition(position, stats[4]);
+        
+            let numberOfPlays = plays.length;
+    
+            $('.player-plays').append("<li>Plays by position " + position + ": " + numberOfPlays + "</li>");
+            
+            plays.map((play) => {
+                $('.player-plays').append("<li>" + play + "</li>");
+            });
+        }
     });
 
 });
@@ -36,7 +60,7 @@ let analyze = (json, half) => {
 
     let RBIs = rbiCounter(fieldingPlays);
 
-    return [numberOfPlays, innings, sortedResults, RBIs];
+    return [numberOfPlays, innings, sortedResults, RBIs, allResults];
 }
 
 let playSorter = (arr) => {
@@ -63,7 +87,7 @@ let inningCounter = (json) => {
         }
         prevHalf=currHalf;
     }
-    innings = Math.ceil(innings);
+    innings = Math.ceil(innings/2);
 
     return innings;
 }
@@ -72,4 +96,50 @@ let rbiCounter = (json) => {
     return json.filter((play) => {
         return play.result.match(/rbi/gi)
     }).length;
+}
+
+let chartFill = (data) => {
+
+    let plays = [];
+
+    for(let play in data) {
+        plays.push({ y: data[play], label: play});
+    }
+
+    let compare = (a,b) => {
+        if(a.y > b.y) {
+            return 1;
+        } else if(a.y < b.y) {
+            return -1;
+        }
+
+        return 0;
+    }
+
+    plays.sort(compare);
+
+    $('div.chart').CanvasJSChart({
+        axisX: {
+            interval: 1
+        },
+        axisY2: {
+            interlacedColor: "lightgrey",
+            gridColor: "grey",
+        },
+        data: [{
+            axisYType: "secondary",
+            color: "#1991eb",
+            animationEnabled: true,
+            type: "bar", 
+            dataPoints: plays
+        }]
+    });
+
+
+}
+
+let trackPosition = (position, data) => {
+    return data.filter((play) => {
+        return play.match(position);
+    });
 }

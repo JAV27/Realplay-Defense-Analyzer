@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -41,23 +42,30 @@
 
             <div class="plays card">
                 <h3>Play Breakdown</h3>
-                <ul class="plays"></ul>
+                <div class="chart"></div>
+                <!-- <ul class="plays"></ul> -->
             </div>
 
             <div class="players card">
                 <h3>Players Breakdown</h3>
-                Choose a Player to Track
+                <p>Choose a Player to Track</p>                    
                 <select name="position">
+                    <option value="Overall">Overall</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
                 </select>
+                <div class="player-graph"></div>
+                <ul class="player-plays"></ul>
             </div>
-
+            
         </div>
-        
     </div>
 </body>
 </html>
