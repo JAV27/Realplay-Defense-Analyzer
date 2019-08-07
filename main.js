@@ -30,13 +30,11 @@ $(document).ready(function() {
 
     $('select').on('change', () => { 
         $('.player-plays').html('');
-        $('.player-graph').hide();
 
         let position = $('option:selected').val();
 
         if(position==="Overall") {
             playerChartFill(stats[4]);
-            $('.player-graph').show();
         } else {
             let plays = trackPosition(position, stats[4]);
         

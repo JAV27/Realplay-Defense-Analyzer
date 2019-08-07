@@ -130,3 +130,6 @@ select {
 .players canvas {
   max-height: 400px;
 }
+.info-container {
+  display: block;
+}
