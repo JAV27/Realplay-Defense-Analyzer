@@ -9,6 +9,7 @@ $(document).ready(function() {
 
     $('button.submit').on('click', () => {
 
+        $('.chart, .player-graph').show();
         $(".card ul").html('');
 
         json = $('textarea').val();
@@ -23,16 +24,19 @@ $(document).ready(function() {
         $('.info').append("<li>Innings Played: " + stats[1] + "</li>");
         $('.info').append("<li>Runs Allowed: " + stats[3] + "</li>");
 
+        playerChartFill(stats[4]);
         chartFill(stats[2]);
     });
 
     $('select').on('change', () => { 
         $('.player-plays').html('');
+        $('.player-graph').hide();
 
         let position = $('option:selected').val();
 
         if(position==="Overall") {
-            
+            playerChartFill(stats[4]);
+            $('.player-graph').show();
         } else {
             let plays = trackPosition(position, stats[4]);
         
@@ -141,5 +145,34 @@ let chartFill = (data) => {
 let trackPosition = (position, data) => {
     return data.filter((play) => {
         return play.match(position);
+    });
+}
+
+let playerChartFill = (data) => {
+    let counts = [0,0,0,0,0,0,0,0,0];
+    
+    for(let i=0;i<data.length;i++) {
+
+        for(let j=1; j<10;j++) {
+            if(data[i].match(j)) {
+                counts[j-1]++;
+            }
+        }
+
+    }
+
+    let dataPoints = counts.map((pos, index) => {
+        nindex = index + 1;
+        return { y: pos, label: "Position: " + nindex }
+    });
+
+    $('.player-graph').CanvasJSChart({
+        animationEnabled: true,
+        data:[{
+            type: 'doughnut',
+            dataPoints: dataPoints,
+            radius: "80%",
+            innerRadius: "80%"
+        }]
     });
 }
